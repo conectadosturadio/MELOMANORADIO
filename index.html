@@ -2,15 +2,13 @@
 
 <script src="https://extassisnetwork.com/player/Luna/luna.js"></script>
 
-<!-- FONDO PARTICULAS -->
-<div class="music-particles"></div>
-
 <!-- PLAYER -->
 <div id="extassisnetwork-wrap">
 
     <!-- GLOW -->
     <div class="neon-glow"></div>
 
+    <!-- REPRODUCTOR -->
     <div id="extassisnetwork"></div>
 
     <!-- CREDITOS -->
@@ -28,11 +26,15 @@ $("#extassisnetwork").lunaradio({
 
     radioname: "MELÓMANO RADIO",
 
+    /* TU FOTO ORIGINAL */
+
     coverimage: "https://raw.githubusercontent.com/conectadosturadio/MELOMANOFOTOPERFIL/main/Gemini_Generated_Image_i56heri56heri56h.png",
 
     onlycoverimage: false,
 
     userinterface: "big",
+
+    /* EL FONDO DEL PLAYER SE DEJA */
 
     backgroundcolor: "rgba(5,5,5,.78)",
 
@@ -80,7 +82,7 @@ $("#extassisnetwork").lunaradio({
 
 }
 
-/* ───────── BODY ───────── */
+/* ───────── BODY TRANSPARENTE ───────── */
 
 body{
 
@@ -88,7 +90,7 @@ body{
 
     padding:20px;
 
-    background:#020202;
+    background:transparent !important;
 
     display:flex;
 
@@ -100,53 +102,17 @@ body{
 
     overflow:hidden;
 
-    position:relative;
-
     font-family:'Be Vietnam',sans-serif;
 
 }
 
-/* ───────── FONDO ANIMADO ───────── */
-
-.music-particles{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(circle at 20% 20%,
-    rgba(57,255,20,.18),
-    transparent 25%),
-
-    radial-gradient(circle at 80% 30%,
-    rgba(255,0,128,.18),
-    transparent 25%),
-
-    radial-gradient(circle at 40% 80%,
-    rgba(0,255,255,.18),
-    transparent 25%),
-
-    radial-gradient(circle at 70% 70%,
-    rgba(255,234,0,.18),
-    transparent 25%);
-
-    animation:moveLights 18s linear infinite alternate;
-
-    filter:blur(45px);
-
-    opacity:.9;
-
-}
-
-/* ───────── PLAYER WRAP ───────── */
+/* ───────── WRAP ───────── */
 
 #extassisnetwork-wrap{
 
-    width:100%;
+    width:92%;
 
-    max-width:360px;
+    max-width:330px;
 
     aspect-ratio:360/480;
 
@@ -156,9 +122,9 @@ body{
 
     border-radius:26px;
 
-    background:rgba(5,5,5,.72);
+    /* TRANSPARENTE SOLO EL EXTERIOR */
 
-    backdrop-filter:blur(14px);
+    background:transparent;
 
     border:2px solid transparent;
 
@@ -166,15 +132,15 @@ body{
 
     box-shadow:
 
-    0 0 18px rgba(57,255,20,.55),
+    0 0 18px rgba(57,255,20,.45),
 
-    0 0 45px rgba(255,0,128,.28),
+    0 0 45px rgba(255,0,128,.18),
 
-    0 0 70px rgba(0,255,255,.2);
+    0 0 70px rgba(0,255,255,.12);
 
 }
 
-/* ───────── GLOW EXTRA ───────── */
+/* ───────── GLOW ───────── */
 
 .neon-glow{
 
@@ -197,7 +163,7 @@ body{
 
     filter:blur(60px);
 
-    opacity:.45;
+    opacity:.35;
 
     animation:rotateGlow 12s linear infinite;
 
@@ -211,74 +177,9 @@ body{
 
     height:100% !important;
 
-    background:transparent !important;
+    /* AQUI YA NO SE TOCA EL FONDO DEL PLAYER */
 
     overflow:hidden;
-
-}
-
-/* ───────── TEXTOS ───────── */
-
-#extassisnetwork *{
-
-    color:#39ff14 !important;
-
-    text-shadow:
-    0 0 8px rgba(57,255,20,.9);
-
-}
-
-/* ───────── BOTONES ───────── */
-
-#extassisnetwork button{
-
-    background:rgba(10,10,10,.7) !important;
-
-    border:1px solid #ffea00 !important;
-
-    box-shadow:
-    0 0 14px rgba(255,234,0,.75);
-
-}
-
-/* ───────── PLAY ───────── */
-
-#extassisnetwork .fa-play,
-#extassisnetwork .fa-pause{
-
-    color:#ff2d55 !important;
-
-    text-shadow:
-    0 0 10px #ff2d55,
-    0 0 25px #ff2d55;
-
-}
-
-/* ───────── IMAGEN ───────── */
-
-#extassisnetwork img{
-
-    animation:musicBeat 1s infinite ease-in-out;
-
-    transform-origin:center;
-
-    border-radius:18px;
-
-    box-shadow:
-
-    0 0 14px #39ff14,
-
-    0 0 35px rgba(57,255,20,.65);
-
-}
-
-/* ───────── VISUALIZER ───────── */
-
-canvas{
-
-    filter:
-    drop-shadow(0 0 10px #39ff14)
-    drop-shadow(0 0 18px #ffea00);
 
 }
 
@@ -313,36 +214,6 @@ canvas{
 
 }
 
-/* ───────── LATIDO ───────── */
-
-@keyframes musicBeat{
-
-    0%{
-
-        transform:scale(1);
-
-        filter:brightness(1);
-
-    }
-
-    50%{
-
-        transform:scale(1.08);
-
-        filter:brightness(1.25);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-        filter:brightness(1);
-
-    }
-
-}
-
 /* ───────── BORDE NEON ───────── */
 
 @keyframes neonBorder{
@@ -353,7 +224,7 @@ canvas{
 
         box-shadow:
         0 0 18px #39ff14,
-        0 0 45px rgba(57,255,20,.45);
+        0 0 45px rgba(57,255,20,.35);
 
     }
 
@@ -363,7 +234,7 @@ canvas{
 
         box-shadow:
         0 0 18px #ffea00,
-        0 0 45px rgba(255,234,0,.45);
+        0 0 45px rgba(255,234,0,.35);
 
     }
 
@@ -373,7 +244,7 @@ canvas{
 
         box-shadow:
         0 0 18px #ff0080,
-        0 0 45px rgba(255,0,128,.45);
+        0 0 45px rgba(255,0,128,.35);
 
     }
 
@@ -383,7 +254,7 @@ canvas{
 
         box-shadow:
         0 0 18px #00ffff,
-        0 0 45px rgba(0,255,255,.45);
+        0 0 45px rgba(0,255,255,.35);
 
     }
 
@@ -393,13 +264,13 @@ canvas{
 
         box-shadow:
         0 0 18px #39ff14,
-        0 0 45px rgba(57,255,20,.45);
+        0 0 45px rgba(57,255,20,.35);
 
     }
 
 }
 
-/* ───────── GLOW ROTATE ───────── */
+/* ───────── ROTACION ───────── */
 
 @keyframes rotateGlow{
 
@@ -417,39 +288,21 @@ canvas{
 
 }
 
-/* ───────── LUCES ───────── */
-
-@keyframes moveLights{
-
-    0%{
-
-        transform:scale(1) translateY(0px);
-
-    }
-
-    100%{
-
-        transform:scale(1.2) translateY(-20px);
-
-    }
-
-}
-
 /* ───────── RESPONSIVE ───────── */
 
 @media(max-width:480px){
 
     body{
 
-        padding:10px;
+        padding:16px;
 
     }
 
     #extassisnetwork-wrap{
 
-        max-width:100%;
+        width:88%;
 
-        border-radius:22px;
+        max-width:320px;
 
     }
 
