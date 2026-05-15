@@ -2,8 +2,14 @@
 
 <script src="https://extassisnetwork.com/player/Luna/luna.js"></script>
 
-<!-- PLAYER WRAP -->
+<!-- FONDO PARTICULAS -->
+<div class="music-particles"></div>
+
+<!-- PLAYER -->
 <div id="extassisnetwork-wrap">
+
+    <!-- GLOW -->
+    <div class="neon-glow"></div>
 
     <div id="extassisnetwork"></div>
 
@@ -28,7 +34,7 @@ $("#extassisnetwork").lunaradio({
 
     userinterface: "big",
 
-    backgroundcolor: "#050505",
+    backgroundcolor: "rgba(5,5,5,.78)",
 
     fontcolor: "#39ff14",
 
@@ -80,9 +86,9 @@ body{
 
     margin:0;
 
-    padding:0;
+    padding:20px;
 
-    background:#000;
+    background:#020202;
 
     display:flex;
 
@@ -92,7 +98,45 @@ body{
 
     min-height:100vh;
 
-    overflow-x:hidden;
+    overflow:hidden;
+
+    position:relative;
+
+    font-family:'Be Vietnam',sans-serif;
+
+}
+
+/* ───────── FONDO ANIMADO ───────── */
+
+.music-particles{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at 20% 20%,
+    rgba(57,255,20,.18),
+    transparent 25%),
+
+    radial-gradient(circle at 80% 30%,
+    rgba(255,0,128,.18),
+    transparent 25%),
+
+    radial-gradient(circle at 40% 80%,
+    rgba(0,255,255,.18),
+    transparent 25%),
+
+    radial-gradient(circle at 70% 70%,
+    rgba(255,234,0,.18),
+    transparent 25%);
+
+    animation:moveLights 18s linear infinite alternate;
+
+    filter:blur(45px);
+
+    opacity:.9;
 
 }
 
@@ -110,16 +154,52 @@ body{
 
     overflow:hidden;
 
-    border-radius:24px;
+    border-radius:26px;
 
-    background:#050505;
+    background:rgba(5,5,5,.72);
 
-    border:2px solid #39ff14;
+    backdrop-filter:blur(14px);
+
+    border:2px solid transparent;
+
+    animation:neonBorder 6s linear infinite;
 
     box-shadow:
-    0 0 10px #39ff14,
-    0 0 25px rgba(57,255,20,.7),
-    0 0 45px rgba(255,234,0,.25);
+
+    0 0 18px rgba(57,255,20,.55),
+
+    0 0 45px rgba(255,0,128,.28),
+
+    0 0 70px rgba(0,255,255,.2);
+
+}
+
+/* ───────── GLOW EXTRA ───────── */
+
+.neon-glow{
+
+    position:absolute;
+
+    inset:-20px;
+
+    z-index:-1;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+    45deg,
+    #39ff14,
+    #ffea00,
+    #ff0080,
+    #00ffff,
+    #39ff14
+    );
+
+    filter:blur(60px);
+
+    opacity:.45;
+
+    animation:rotateGlow 12s linear infinite;
 
 }
 
@@ -131,7 +211,7 @@ body{
 
     height:100% !important;
 
-    background:#050505 !important;
+    background:transparent !important;
 
     overflow:hidden;
 
@@ -144,7 +224,7 @@ body{
     color:#39ff14 !important;
 
     text-shadow:
-    0 0 8px rgba(57,255,20,.8);
+    0 0 8px rgba(57,255,20,.9);
 
 }
 
@@ -152,25 +232,25 @@ body{
 
 #extassisnetwork button{
 
-    background:#101010 !important;
+    background:rgba(10,10,10,.7) !important;
 
     border:1px solid #ffea00 !important;
 
     box-shadow:
-    0 0 10px rgba(255,234,0,.7);
+    0 0 14px rgba(255,234,0,.75);
 
 }
 
-/* ───────── PLAY / PAUSE ───────── */
+/* ───────── PLAY ───────── */
 
 #extassisnetwork .fa-play,
 #extassisnetwork .fa-pause{
 
-    color:#ff2d2d !important;
+    color:#ff2d55 !important;
 
     text-shadow:
-    0 0 10px #ff2d2d,
-    0 0 22px #ff2d2d;
+    0 0 10px #ff2d55,
+    0 0 25px #ff2d55;
 
 }
 
@@ -185,54 +265,10 @@ body{
     border-radius:18px;
 
     box-shadow:
-    0 0 12px #39ff14,
-    0 0 30px rgba(57,255,20,.6);
 
-}
+    0 0 14px #39ff14,
 
-/* ───────── EFECTO MUSICAL ───────── */
-
-@keyframes musicBeat{
-
-    0%{
-
-        transform:scale(1);
-
-        filter:brightness(1);
-
-    }
-
-    25%{
-
-        transform:scale(1.03);
-
-        filter:brightness(1.1);
-
-    }
-
-    50%{
-
-        transform:scale(1.08);
-
-        filter:brightness(1.25);
-
-    }
-
-    75%{
-
-        transform:scale(1.03);
-
-        filter:brightness(1.1);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-        filter:brightness(1);
-
-    }
+    0 0 35px rgba(57,255,20,.65);
 
 }
 
@@ -241,8 +277,8 @@ body{
 canvas{
 
     filter:
-    drop-shadow(0 0 8px #39ff14)
-    drop-shadow(0 0 14px #ffea00);
+    drop-shadow(0 0 10px #39ff14)
+    drop-shadow(0 0 18px #ffea00);
 
 }
 
@@ -260,26 +296,146 @@ canvas{
 
     text-align:center;
 
-    font-size:8px;
+    font-size:7px;
 
-    letter-spacing:.8px;
+    letter-spacing:1px;
 
     color:#39ff14;
 
-    font-family:'Be Vietnam',sans-serif;
-
     text-shadow:
-    0 0 6px rgba(57,255,20,.9);
+    0 0 8px rgba(57,255,20,.95);
 
     z-index:999;
 
     pointer-events:none;
 
-    opacity:.9;
+    opacity:.85;
 
 }
 
-/* ───────── RESPONSIVE PERFECTO ───────── */
+/* ───────── LATIDO ───────── */
+
+@keyframes musicBeat{
+
+    0%{
+
+        transform:scale(1);
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+        filter:brightness(1.25);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        filter:brightness(1);
+
+    }
+
+}
+
+/* ───────── BORDE NEON ───────── */
+
+@keyframes neonBorder{
+
+    0%{
+
+        border-color:#39ff14;
+
+        box-shadow:
+        0 0 18px #39ff14,
+        0 0 45px rgba(57,255,20,.45);
+
+    }
+
+    25%{
+
+        border-color:#ffea00;
+
+        box-shadow:
+        0 0 18px #ffea00,
+        0 0 45px rgba(255,234,0,.45);
+
+    }
+
+    50%{
+
+        border-color:#ff0080;
+
+        box-shadow:
+        0 0 18px #ff0080,
+        0 0 45px rgba(255,0,128,.45);
+
+    }
+
+    75%{
+
+        border-color:#00ffff;
+
+        box-shadow:
+        0 0 18px #00ffff,
+        0 0 45px rgba(0,255,255,.45);
+
+    }
+
+    100%{
+
+        border-color:#39ff14;
+
+        box-shadow:
+        0 0 18px #39ff14,
+        0 0 45px rgba(57,255,20,.45);
+
+    }
+
+}
+
+/* ───────── GLOW ROTATE ───────── */
+
+@keyframes rotateGlow{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ───────── LUCES ───────── */
+
+@keyframes moveLights{
+
+    0%{
+
+        transform:scale(1) translateY(0px);
+
+    }
+
+    100%{
+
+        transform:scale(1.2) translateY(-20px);
+
+    }
+
+}
+
+/* ───────── RESPONSIVE ───────── */
 
 @media(max-width:480px){
 
@@ -291,11 +447,9 @@ canvas{
 
     #extassisnetwork-wrap{
 
-        width:100%;
-
         max-width:100%;
 
-        border-radius:20px;
+        border-radius:22px;
 
     }
 
