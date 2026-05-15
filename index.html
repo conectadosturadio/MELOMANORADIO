@@ -26,15 +26,11 @@ $("#extassisnetwork").lunaradio({
 
     radioname: "MELÓMANO RADIO",
 
-    /* TU FOTO ORIGINAL */
-
     coverimage: "https://raw.githubusercontent.com/conectadosturadio/MELOMANOFOTOPERFIL/main/Gemini_Generated_Image_i56heri56heri56h.png",
 
     onlycoverimage: false,
 
     userinterface: "big",
-
-    /* EL FONDO DEL PLAYER SE DEJA */
 
     backgroundcolor: "rgba(5,5,5,.78)",
 
@@ -69,6 +65,86 @@ $("#extassisnetwork").lunaradio({
     usestreamcorsproxy: "true",
 
 });
+
+</script>
+
+<!-- AUTOPLAY FORZADO -->
+
+<script>
+
+function startRadio(){
+
+    try{
+
+        const audio = document.querySelector("audio");
+
+        const playBtn = document.querySelector(".fa-play");
+
+        if(audio){
+
+            /* AUTOPLAY */
+
+            audio.autoplay = true;
+
+            audio.muted = true;
+
+            audio.volume = 1;
+
+            let promise = audio.play();
+
+            if(promise !== undefined){
+
+                promise.then(()=>{
+
+                    setTimeout(()=>{
+
+                        audio.muted = false;
+
+                    },1200);
+
+                }).catch(()=>{});
+
+            }
+
+        }
+
+        /* CLICK AUTOMATICO PLAY */
+
+        if(playBtn){
+
+            playBtn.click();
+
+        }
+
+    }catch(e){}
+
+}
+
+/* MULTIPLES INTENTOS */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(startRadio,1000);
+
+    setTimeout(startRadio,2500);
+
+    setTimeout(startRadio,4000);
+
+    setTimeout(startRadio,6500);
+
+});
+
+/* ACTIVADORES */
+
+document.addEventListener("click",startRadio);
+
+document.addEventListener("touchstart",startRadio);
+
+document.addEventListener("mousemove",startRadio);
+
+document.addEventListener("scroll",startRadio);
+
+document.addEventListener("keydown",startRadio);
 
 </script>
 
@@ -122,8 +198,6 @@ body{
 
     border-radius:26px;
 
-    /* TRANSPARENTE SOLO EL EXTERIOR */
-
     background:transparent;
 
     border:2px solid transparent;
@@ -176,8 +250,6 @@ body{
     width:100% !important;
 
     height:100% !important;
-
-    /* AQUI YA NO SE TOCA EL FONDO DEL PLAYER */
 
     overflow:hidden;
 
